@@ -8,7 +8,7 @@ export default () => {
  const isLoggedIn = true;
   return (
     <View style={{ flex: "1" }}>
-        {isLoggedIn ? <TabNavigation /> : <AuthNavigation />}
+        {isLoggedIn ? <MainNavigation /> : <AuthNavigation />}
     </View>
   );
 };
