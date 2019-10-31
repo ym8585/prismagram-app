@@ -1,4 +1,3 @@
-/* 입력 디자인 UI*/ 
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
@@ -13,7 +12,7 @@ const TextInput = styled.TextInput`
   width: ${constants.width / 2};
   padding: 10px;
   background-color: ${props => props.theme.greyColor};
-  border: 1px solid ${props => props.theme.darkGreyColor};
+  border: 0.5px solid ${props => props.theme.darkGreyColor};
   border-radius: 4px;
 `;
 
@@ -22,14 +21,20 @@ const AuthInput = ({
     value,
     keyboardType = "default",
     autoCapitalize = "none",
-    onChange
+    returnKeyType = "done",
+    onChange,
+    onSubmitEditing = () => null,
+    autoCorrect = true
   }) => (
     <Container>
       <TextInput
         onChangeText={onChange}
         keyboardType={keyboardType}
+        returnKeyType={returnKeyType}
         placeholder={placeholder}
         autoCapitalize={autoCapitalize}
+        onSubmitEditing={onSubmitEditing}
+        autoCorrect={autoCorrect}
         value={value}
       />
     </Container>
@@ -47,7 +52,10 @@ AuthInput.propTypes = {
     "phone-pad"
   ]),
   autoCapitalize: PropTypes.oneOf(["none", "sentences", "words", "characters"]),
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  returnKeyType: PropTypes.oneOf(["done", "go", "next", "search", "send"]),
+  onSubmitEditing: PropTypes.func,
+  autoCorrect: PropTypes.bool
 };
 
 export default AuthInput;
