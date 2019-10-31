@@ -1,5 +1,7 @@
+import { getStoreKeyName } from "apollo-utilities";
+
 const options = {
-    uri: "https://localhost:4000"
+    uri: "http://192.168.0.163:4000"
   };
   
   export default options;
